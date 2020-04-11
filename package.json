@@ -2,7 +2,7 @@
   "name": "minecraft.nickbreaton.com",
   "version": "0.1.0",
   "private": true,
-  "browserlist": "> 0.5%, not IE 11, not op_mini all",
+  "browserslist": "> 0.5%, not IE 11, not op_mini all",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
