@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+const shorten = (text) => text.replace(/\n/g, "");
+
 const Font = ({ family, href, format }) => {
     const style = `
         html {
@@ -20,10 +22,9 @@ const Font = ({ family, href, format }) => {
         }
     `;
     const script = `
-        document.fonts.load('1em "${family}"');
-        document.fonts.ready.then(() => {
-            document.documentElement.className += " fonts-loaded";
-        });
+        const font = new FontFace('${family}', 'url("${href}")');
+        document.fonts.add(font);
+        font.loaded.then(() => document.documentElement.className += " fonts-loaded");
     `;
     return (
         <Head>
@@ -34,8 +35,8 @@ const Font = ({ family, href, format }) => {
                 type={`font/${format}`}
                 crossorigin="anonymous"
             />
-            <style>{style.replace(/\n/g, "")}</style>
-            <script dangerouslySetInnerHTML={{ __html: script.replace(/\n/g, "") }} />
+            <style>{shorten(style)}</style>
+            <script dangerouslySetInnerHTML={{ __html: shorten(script) }} />
         </Head>
     );
 };
