@@ -2,7 +2,7 @@ import Head from "next/head";
 
 const shorten = (text) => text.replace(/\n/g, "");
 
-const Font = ({ family, href, format }) => {
+const BlockingFont = ({ family, href, format }) => {
     const style = `
         html.loading-${family} {
             visibility: hidden;
@@ -39,4 +39,4 @@ const Font = ({ family, href, format }) => {
     );
 };
 
-export default Font;
+export default BlockingFont;
