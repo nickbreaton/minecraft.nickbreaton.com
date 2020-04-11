@@ -19,10 +19,12 @@ const BlockingFont = ({ family, href, format }) => {
         }
     `;
     const script = `
-        document.documentElement.classList.add('loading-${family}');
-        const font = new FontFace('${family}', 'url("${href}")');
-        document.fonts.add(font);
-        font.loaded.then(() => document.documentElement.classList.remove('loading-${family}'));
+        {
+            const font = new FontFace('${family}', 'url("${href}")');
+            document.documentElement.classList.add('loading-${family}');
+            document.fonts.add(font);
+            font.loaded.then(() => document.documentElement.classList.remove('loading-${family}'));
+        }
     `;
     return (
         <Head>
