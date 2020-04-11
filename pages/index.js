@@ -9,16 +9,30 @@ const Home = ({ isOnline, title }) => (
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
+        <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
+        <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
         <span>{isOnline ? "Online 🟢" : "Offline 🔴"}</span>
     </div>
 );
 
 export const getServerSideProps = async () => {
-    const { isOnline, title } = await getStatus({
-        host: "minecraftserver.nickbreaton.com",
-    })
-        .then(({ description }) => ({ isOnline: true, title: description.text }))
-        .catch(() => ({ isOnline: false, title: "Server Offline" }));
+    const getServerStatus = async () => {
+        const { description } = await getStatus({
+            host: "minecraftserver.nickbreaton.com",
+        });
+        return { isOnline: true, title: description.text };
+    };
+
+    const timeout = (interval) => {
+        return new Promise((_, reject) => setTimeout(reject, interval));
+    };
+
+    const { isOnline, title } = await Promise.race([getServerStatus(), timeout(1000)]).catch(
+        () => ({
+            isOnline: false,
+            title: "Server Offline",
+        })
+    );
 
     return {
         props: {
