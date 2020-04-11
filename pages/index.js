@@ -5,7 +5,7 @@ import BlockingFont from "../components/BlockingFont";
 const Home = ({ isOnline, title }) => (
     <div>
         <Head>
-            {title && <title>{title}</title>}
+            <title>{title}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
