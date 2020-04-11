@@ -9,8 +9,6 @@ const Home = ({ isOnline, title }) => (
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
-        <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
-        <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
         <span>{isOnline ? "Online 🟢" : "Offline 🔴"}</span>
     </div>
 );
