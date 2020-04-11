@@ -4,11 +4,8 @@ const shorten = (text) => text.replace(/\n/g, "");
 
 const Font = ({ family, href, format }) => {
     const style = `
-        html {
+        html.loading-${family} {
             visibility: hidden;
-        }
-        html.fonts-loaded {
-            visibility: visible;
         }
         body {
             font-family: '${family}';
@@ -22,9 +19,10 @@ const Font = ({ family, href, format }) => {
         }
     `;
     const script = `
+        document.documentElement.classList.add('loading-${family}');
         const font = new FontFace('${family}', 'url("${href}")');
         document.fonts.add(font);
-        font.loaded.then(() => document.documentElement.className += " fonts-loaded");
+        font.loaded.then(() => document.documentElement.classList.remove('loading-${family}'));
     `;
     return (
         <Head>
