@@ -10,6 +10,7 @@ const Font = ({ family, href, format }) => {
             src: url('${href}') format('${format}');
             font-weight: normal;
             font-style: normal;
+            font-display: block;
         }
     `;
     return (
