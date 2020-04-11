@@ -2,9 +2,10 @@ import Head from "next/head";
 import { getStatus } from "mc-server-status";
 import Font from "../components/Font";
 
-const Home = ({ isOnline }) => (
+const Home = ({ isOnline, title }) => (
     <div>
         <Head>
+            {title && <title>{title}</title>}
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <Font family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
@@ -13,15 +14,16 @@ const Home = ({ isOnline }) => (
 );
 
 export const getServerSideProps = async () => {
-    const isOnline = await getStatus({
+    const { isOnline, title } = await getStatus({
         host: "minecraftserver.nickbreaton.com",
     })
-        .then(() => true)
-        .catch(() => false);
+        .then(({ description }) => ({ isOnline: true, title: description.text }))
+        .catch(() => ({ isOnline: false }));
 
     return {
         props: {
             isOnline,
+            title,
         },
     };
 };
