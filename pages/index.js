@@ -21,7 +21,7 @@ const Home = ({ isOnline, title }) => (
 export const getServerSideProps = async () => {
     const getServerStatus = async () => {
         const { description } = await getStatus({
-            host: "minecraftserver.nickbreaton.com",
+            host: "server.minecraft.nickbreaton.com",
         });
         return { isOnline: true, title: description.text };
     };
