@@ -16,7 +16,7 @@ const Home = ({ isOnline, title }) => (
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
         <div>{isOnline ? "Online 🟢" : "Offline 🔴"}</div>
         <iframe
-            src="https://maps.minecraft.nickbreaton.com/index.html"
+            src="https://minecraft-dynmap.nickbreaton.com/index.html"
             style={{ width: "100%", height: "30rem" }}
         />
     </div>
@@ -25,7 +25,7 @@ const Home = ({ isOnline, title }) => (
 export const getServerSideProps = async () => {
     const getServerStatus = async () => {
         const { description } = await getStatus({
-            host: "server.minecraft.nickbreaton.com",
+            host: "minecraft-server.nickbreaton.com",
         });
         return { isOnline: true, title: description.text };
     };
