@@ -33,7 +33,7 @@ const BlockingFont = ({ family, href, format }) => {
                 href={href}
                 as="font"
                 type={`font/${format}`}
-                crossorigin="anonymous"
+                crossOrigin="anonymous"
             />
             <style dangerouslySetInnerHTML={{ __html: shorten(style) }} />
             <script dangerouslySetInnerHTML={{ __html: shorten(script) }} />
