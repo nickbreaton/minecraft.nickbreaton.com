@@ -14,7 +14,11 @@ const Home = ({ isOnline, title }) => (
             />
         </Head>
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
-        <span>{isOnline ? "Online 🟢" : "Offline 🔴"}</span>
+        <div>{isOnline ? "Online 🟢" : "Offline 🔴"}</div>
+        <iframe
+            src="https://maps.minecraft.nickbreaton.com/index.html"
+            style={{ width: "100%", height: "30rem" }}
+        />
     </div>
 );
 
