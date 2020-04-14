@@ -15,10 +15,6 @@ const Home = ({ isOnline, title }) => (
         </Head>
         <BlockingFont family="MinecraftBody" href="MinecraftBody.woff2" format="woff2" />
         <div>{isOnline ? "Online 🟢" : "Offline 🔴"}</div>
-        <iframe
-            src="https://minecraft-dynmap.nickbreaton.com/index.html"
-            style={{ width: "100%", height: "30rem" }}
-        />
     </div>
 );
 
